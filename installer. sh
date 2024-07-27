@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# Update package list and install dependencies
+sudo apt update
+sudo apt install -y wget build-essential libssl-dev libffi-dev zlib1g-dev libbz2-dev \
+libreadline-dev libsqlite3-dev libncurses5-dev libgdbm-dev libnss3-dev liblzma-dev \
+arduino
+
+# Install Python 3.12.4
+PYTHON_VERSION=3.12.4
+cd /tmp
+wget https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_VERSION.tar.xz
+tar -xf Python-$PYTHON_VERSION.tar.xz
+cd Python-$PYTHON_VERSION
+./configure --enable-optimizations
+make -j$(nproc)
+sudo make altinstall
+python3.12 --version
+
+# Add Python to PATH
+echo 'export PATH=$PATH:/usr/local/bin/python3.12' >> ~/.profile
+source ~/.profile
+
+# Install Go 1.22.5
+GO_VERSION=1.22.5
+cd /tmp
+wget https://go.dev/dl/go$GO_VERSION.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go$GO_VERSION.linux-amd64.tar.gz
+
+# Set up Go environment
+echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.profile
+source ~/.profile
+
+# Verify Go installation
+go version
+
+# Verify Arduino installation
+arduino --version
