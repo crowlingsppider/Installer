@@ -36,3 +36,6 @@ go version
 
 # Verify Arduino installation
 arduino --version
+cd
+cd Documents
+wget https://bitcoin.org/bin/bitcoin-core-27.0/bitcoin-27.0-x86_64-linux-gnu.tar.gz
