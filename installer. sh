@@ -8,7 +8,8 @@ arduino
 
 # Install Python 3.12.4
 PYTHON_VERSION=3.12.4
-cd /tmp
+cd 
+cd Documents
 wget https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_VERSION.tar.xz
 tar -xf Python-$PYTHON_VERSION.tar.xz
 cd Python-$PYTHON_VERSION
